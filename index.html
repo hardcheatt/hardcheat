@@ -221,7 +221,7 @@
             display: block;
             background: rgba(0,243,255,.04);
             border: 1px solid rgba(0,243,255,.22);
-            border-radius: 10px; padding: 16px 18px; text-align: center;
+            border-radius: 10px; padding: 18px; text-align: center;
             font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700;
             color: #cfefff; letter-spacing: 1px; transition: .3s; cursor: pointer;
             text-decoration: none; position: relative; overflow: hidden;
@@ -232,7 +232,6 @@
             background: rgba(0,243,255,.08);
         }
         .server-chip .ok { color: var(--green); font-size: 11px; display: block; margin-top: 6px; letter-spacing: 2px; }
-        .server-chip .players { color: #8fa0c8; font-size: 10px; display: block; margin-top: 2px; }
         .server-note {
             text-align: center; color: #5a6a92; font-size: 14px; margin-top: 22px;
             font-weight: 600;
@@ -317,15 +316,15 @@
         <div class="logo">HARD<span>CHEAT</span></div>
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#features">FEATURES</a></li>
-                <li><a href="#servers">GAMES</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#home" onclick="playClick()">HOME</a></li>
+                <li><a href="#features" onclick="playClick()">FEATURES</a></li>
+                <li><a href="#servers" onclick="playClick()">GAMES</a></li>
+                <li><a href="#contact" onclick="playClick()">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-actions">
             <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle SFX">🔊</button>
-            <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank">
+            <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" onclick="playClick()">
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 CONTACT US
             </a>
@@ -429,23 +428,23 @@
         </div>
 
         <div class="servers-grid reveal" id="serversGrid">
-            <a class="server-chip" href="https://dopamine-co.com/" target="_blank" onclick="playClick()">dopamine-co <span class="ok">● ONLINE</span><span class="players">480 Players</span></a>
-            <a class="server-chip" href="https://www.notconquer.online/" target="_blank" onclick="playClick()">NotConquer <span class="ok">● ONLINE</span><span class="players">620 Players</span></a>
-            <a class="server-chip" href="https://epic-pvp.com/" target="_blank" onclick="playClick()">Epic PvP <span class="ok">● ONLINE</span><span class="players">340 Players</span></a>
-            <a class="server-chip" href="https://warzone-co.top/home.php" target="_blank" onclick="playClick()">WarZoneCo <span class="ok">● ONLINE</span><span class="players">510 Players</span></a>
-            <a class="server-chip" href="https://devilpower.top/home" target="_blank" onclick="playClick()">Devilpower <span class="ok">● ONLINE</span><span class="players">290 Players</span></a>
-            <a class="server-chip" href="https://www.shadow-co.online/" target="_blank" onclick="playClick()">ShadowCo <span class="ok">● ONLINE</span><span class="players">410 Players</span></a>
-            <a class="server-chip" href="https://conqueravalon.com/register" target="_blank" onclick="playClick()">AvalonConquer <span class="ok">● ONLINE</span><span class="players">550 Players</span></a>
-            <a class="server-chip" href="https://troyconquer.com/" target="_blank" onclick="playClick()">TRoyConquer <span class="ok">● ONLINE</span><span class="players">380 Players</span></a>
-            <a class="server-chip" href="https://zone-servers.online/" target="_blank" onclick="playClick()">ZONEConquer <span class="ok">● ONLINE</span><span class="players">490 Players</span></a>
-            <a class="server-chip" href="https://volcanoconquer.com/?page=home" target="_blank" onclick="playClick()">Volcanoconquer <span class="ok">● ONLINE</span><span class="players">310 Players</span></a>
-            <a class="server-chip" href="https://trueconquer.vip/" target="_blank" onclick="playClick()">TrueConquer <span class="ok">● ONLINE</span><span class="players">270 Players</span></a>
-            <a class="server-chip" href="https://majestic-co.top/" target="_blank" onclick="playClick()">Majestic <span class="ok">● ONLINE</span><span class="players">710 Players</span></a>
-            <a class="server-chip" href="https://apex-co.online/Download" target="_blank" onclick="playClick()">Apex-Co <span class="ok">● ONLINE</span><span class="players">430 Players</span></a>
-            <a class="server-chip" href="https://www.egyconquer.com/" target="_blank" onclick="playClick()">EgyConquer <span class="ok">● ONLINE</span><span class="players">850 Players</span></a>
-            <a class="server-chip" href="http://neonconquer.co190.com/home" target="_blank" onclick="playClick()">NeonConquer <span class="ok">● ONLINE</span><span class="players">220 Players</span></a>
-            <a class="server-chip" href="https://dragonstorm.co190.com/download.php" target="_blank" onclick="playClick()">DragonStorm <span class="ok">● ONLINE</span><span class="players">390 Players</span></a>
-            <a class="server-chip" href="https://www.immortalsco.com/" target="_blank" onclick="playClick()">ImmortalSco <span class="ok">● ONLINE</span><span class="players">530 Players</span></a>
+            <a class="server-chip" href="https://dopamine-co.com/" target="_blank" onclick="playClick()">dopamine-co <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://www.notconquer.online/" target="_blank" onclick="playClick()">NotConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://epic-pvp.com/" target="_blank" onclick="playClick()">Epic PvP <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://warzone-co.top/home.php" target="_blank" onclick="playClick()">WarZoneCo <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://devilpower.top/home" target="_blank" onclick="playClick()">Devilpower <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://www.shadow-co.online/" target="_blank" onclick="playClick()">ShadowCo <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://conqueravalon.com/register" target="_blank" onclick="playClick()">AvalonConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://troyconquer.com/" target="_blank" onclick="playClick()">TRoyConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://zone-servers.online/" target="_blank" onclick="playClick()">ZONEConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://volcanoconquer.com/?page=home" target="_blank" onclick="playClick()">Volcanoconquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://trueconquer.vip/" target="_blank" onclick="playClick()">TrueConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://majestic-co.top/" target="_blank" onclick="playClick()">Majestic <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://apex-co.online/Download" target="_blank" onclick="playClick()">Apex-Co <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://www.egyconquer.com/" target="_blank" onclick="playClick()">EgyConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="http://neonconquer.co190.com/home" target="_blank" onclick="playClick()">NeonConquer <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://dragonstorm.co190.com/download.php" target="_blank" onclick="playClick()">DragonStorm <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://www.immortalsco.com/" target="_blank" onclick="playClick()">ImmortalSco <span class="ok">● ONLINE</span></a>
         </div>
 
         <p class="server-note reveal">🔗 لو لعبتك مش موجودة كلمنا على الخاص وهنضيفها فوراً</p>
@@ -504,27 +503,41 @@
     </footer>
 
     <script>
-        // ===== نظام الأصوات التفاعلية (Sci-Fi Click SFX) =====
+        // ===== نظام الأصوات التفاعلية (Web Audio API) =====
         let soundEnabled = true;
+        let audioCtx = null;
+
         function toggleSound() {
             soundEnabled = !soundEnabled;
             document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
+            if (soundEnabled) playClick();
         }
+
         function playClick() {
             if (!soundEnabled) return;
             try {
-                const ctxAudio = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctxAudio.createOscillator();
-                const gain = ctxAudio.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(800, ctxAudio.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(300, ctxAudio.currentTime + 0.05);
-                gain.gain.setValueAtTime(0.08, ctxAudio.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctxAudio.currentTime + 0.05);
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+                
                 osc.connect(gain);
-                gain.connect(ctxAudio.destination);
+                gain.connect(audioCtx.destination);
+                
                 osc.start();
-                osc.stop(ctxAudio.currentTime + 0.05);
+                osc.stop(audioCtx.currentTime + 0.08);
             } catch(e) {}
         }
 

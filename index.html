@@ -299,13 +299,31 @@
             nav ul { gap: 16px; }
             .hero h1 { font-size: 40px; }
         }
+
+        /* ===== Premium polish ===== */
+        .hero { background: radial-gradient(ellipse at 50% 45%, rgba(0,243,255,.055), transparent 55%); }
+        .card, .server-chip, .display-box { box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 12px 34px rgba(0,0,0,.16); }
+        .server-chip { min-height: 88px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; overflow-wrap: anywhere; }
+        .server-chip .ok { letter-spacing: 1.2px; }
+        .server-chip.no-link { cursor: default; color: #aeb9d5; border-style: dashed; border-color: rgba(255,45,120,.35); background: rgba(255,45,120,.035); }
+        .server-chip.no-link:hover { transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 12px 34px rgba(0,0,0,.16); color: #aeb9d5; border-color: rgba(255,45,120,.35); }
+        .server-chip .pending { color: #ff8bb0; }
+        .section-title h2 { text-wrap: balance; }
+        .btn, .tab, .fb-btn { -webkit-tap-highlight-color: transparent; }
+        @media (max-width: 768px) {
+            header { justify-content: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 12px 18px; }
+            .header-actions { justify-content: center; }
+            section { padding: 72px 18px; }
+            .display-box { padding: 22px 18px; }
+        }
     </style>
 </head>
 <body>
 
     <!-- شريط التحديثات المتحرك -->
     <div class="top-ticker">
-        <marquee scrollamount="5">🔥 HARDCHEAT V3.2 ACTIVE — ALL SERVERS ONLINE · AIMBOT & AUTO JUMP UPDATED · UNBAN SPECIALIST READY</marquee>
+        <marquee scrollamount="5">⚡ HARDCHEAT ULTIMATE — CONQUER ONLINE COMMUNITY · MACRO / CLICKER · GAME LINKS UPDATED</marquee>
     </div>
 
     <canvas id="particles"></canvas>
@@ -324,7 +342,7 @@
         </nav>
         <div class="header-actions">
             <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle SFX">🔊</button>
-            <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" onclick="playClick()">
+            <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" onclick="playClick()">
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 CONTACT US
             </a>
@@ -342,7 +360,7 @@
         </p>
         <div class="hero-actions">
             <a href="#features" class="btn filled" onclick="playClick()">EXPLORE FEATURES</a>
-            <a href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" class="btn" onclick="playClick()">CONTACT SUPPORT</a>
+            <a href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" class="btn" onclick="playClick()">CONTACT SUPPORT</a>
         </div>
         <div class="scroll-hint">▼ Scroll Down</div>
     </section>
@@ -351,7 +369,7 @@
     <section id="features">
         <div class="section-title reveal">
             <h2>⚡ <span class="gradient-text">FEATURES</span></h2>
-            <p>كل المزايا شغّالة وجاهزة — اختر وابدأ السيطرة فوراً</p>
+            <p>أدوات ومزايا HardCheat — تفاصيل واضحة وروابط الألعاب في مكان واحد</p>
             <div class="line"></div>
         </div>
 
@@ -406,8 +424,8 @@
             </div>
             <div class="card reveal" onclick="playClick()">
                 <span class="icon">⚙️</span>
-                <h3>MACRO SYSTEM</h3>
-                <p>ماكرو مخصص لكومبو بضغطة واحدة — سرعة تنفيذ أسطورية.</p>
+                <h3>MACRO / CLICKER</h3>
+                <p>الكليكر والماكرو شغالين مع جميع إصدارات Conquer Online — تحكّم أسرع وتنفيذ أسهل.</p>
                 <span class="status">Working</span>
             </div>
         </div>
@@ -417,7 +435,7 @@
     <section id="servers">
         <div class="section-title reveal">
             <h2>🌐 SUPPORTED <span class="gradient-text">GAMES</span></h2>
-            <p>ابحث عن لعبتك أو اضغط عليها لفتح موقعها مباشرة</p>
+            <p>ابحث عن اسم اللعبة واضغط على بطاقتها لفتح الموقع الرسمي أو صفحة السيرفر</p>
             <div class="line"></div>
         </div>
 
@@ -428,23 +446,23 @@
         </div>
 
         <div class="servers-grid reveal" id="serversGrid">
-            <a class="server-chip" href="https://dopamine-co.com/" target="_blank" onclick="playClick()">dopamine-co <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://www.notconquer.online/" target="_blank" onclick="playClick()">NotConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://epic-pvp.com/" target="_blank" onclick="playClick()">Epic PvP <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://warzone-co.top/home.php" target="_blank" onclick="playClick()">WarZoneCo <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://devilpower.top/home" target="_blank" onclick="playClick()">Devilpower <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://www.shadow-co.online/" target="_blank" onclick="playClick()">ShadowCo <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://conqueravalon.com/register" target="_blank" onclick="playClick()">AvalonConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://troyconquer.com/" target="_blank" onclick="playClick()">TRoyConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://zone-servers.online/" target="_blank" onclick="playClick()">ZONEConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://volcanoconquer.com/?page=home" target="_blank" onclick="playClick()">Volcanoconquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://trueconquer.vip/" target="_blank" onclick="playClick()">TrueConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://majestic-co.top/" target="_blank" onclick="playClick()">Majestic <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://apex-co.online/Download" target="_blank" onclick="playClick()">Apex-Co <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://www.egyconquer.com/" target="_blank" onclick="playClick()">EgyConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="http://neonconquer.co190.com/home" target="_blank" onclick="playClick()">NeonConquer <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://dragonstorm.co190.com/download.php" target="_blank" onclick="playClick()">DragonStorm <span class="ok">● ONLINE</span></a>
-            <a class="server-chip" href="https://www.immortalsco.com/" target="_blank" onclick="playClick()">ImmortalSco <span class="ok">● ONLINE</span></a>
+            <a class="server-chip" href="https://dopamine-co.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">Dopamine-Co <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://www.notconquer.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">NotConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://devilpower.top/home" target="_blank" rel="noopener noreferrer" onclick="playClick()">Devilpower <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://www.shadow-co.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ShadowCo <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://conqueravalon.com/register" target="_blank" rel="noopener noreferrer" onclick="playClick()">AvalonConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://troyconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">TroyConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://zone-servers.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ZONEConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://volcanoconquer.com/?page=home" target="_blank" rel="noopener noreferrer" onclick="playClick()">VolcanoConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://majestic-co.top/" target="_blank" rel="noopener noreferrer" onclick="playClick()">Majestic-Co <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://www.egyconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">EgyConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://www.immortalsco.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ImmortalsCo <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://stormco99.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">StormCo99 <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://voidconquer.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">VoidConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://warconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">WarConquer <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://www.conqueraway.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ConquerAway <span class="ok">● GAME SITE</span></a>
+            <a class="server-chip" href="https://imperio.latinconquer.top/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ImperioConquer <span class="ok">● GAME SITE</span></a>
+            <div class="server-chip no-link" role="note" aria-label="Kemet-Co website not provided">Kemet-Co <span class="ok pending">● LINK COMING SOON</span></div>
         </div>
 
         <p class="server-note reveal">🔗 لو لعبتك مش موجودة كلمنا على الخاص وهنضيفها فوراً</p>
@@ -476,12 +494,12 @@
     <section id="contact">
         <div class="section-title reveal">
             <h2>📞 CONTACT <span class="gradient-text">US</span></h2>
-            <p>لعبتك مش موجودة؟ كيسيسلمنا عيسيلى السيسيخاص وهنضيفهسيسيا فوراً</p>
+            <p>لعبتك مش موجودة؟ كلمنا على الخاص وهنضيفها فوراً</p>
             <div class="line"></div>
         </div>
         <div class="control-tabs reveal">
-            <a class="tab" href="https://www.facebook.com/ConqeurHard" target="_blank" style="text-decoration:none;" onclick="playClick()">📘 Official Page</a>
-            <a class="tab" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" style="text-decoration:none;" onclick="playClick()">👤 Personal Account</a>
+            <a class="tab" href="https://www.facebook.com/ConqeurHard" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" onclick="playClick()">📘 Official Page</a>
+            <a class="tab" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" onclick="playClick()">👤 Personal Account</a>
         </div>
     </section>
 
@@ -490,11 +508,11 @@
         <span class="logo">HARD<span>CHEAT</span></span>
         <p>System Monitor & Memory Management Engine — Ultimate Control.</p>
         <div class="social-row">
-            <a class="social" href="https://www.facebook.com/ConqeurHard" target="_blank" onclick="playClick()">
+            <a class="social" href="https://www.facebook.com/ConqeurHard" target="_blank" rel="noopener noreferrer" onclick="playClick()">
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 Official Page
             </a>
-            <a class="social" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" onclick="playClick()">
+            <a class="social" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" onclick="playClick()">
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 Personal Account
             </a>
@@ -636,7 +654,7 @@
                     title: '🎮 HardCheat Control Center',
                     items: [
                         'كل المزايا شغّالة — Aimbot · Auto Jump · Auto Revive · Auto Refine',
-                        'Fire of Hell & Macro System جاهزة للتفعيل',
+                        'Macro / Clicker — يعمل مع جميع إصدارات Conquer Online',
                         'دعم سيرفرات Conquer Online 2D — اضغط على اللعبة وافتح موقعها',
                         'Unban Specialist — فك باند IP & HWID'
                     ]
@@ -644,23 +662,23 @@
                 servers: {
                     title: '🌐 Supported Games (Click to open)',
                     items: [
-                        'dopamine-co → dopamine-co.com',
+                        'Dopamine-Co → dopamine-co.com',
                         'NotConquer → notconquer.online',
-                        'Epic PvP → epic-pvp.com',
-                        'WarZoneCo → warzone-co.top',
                         'Devilpower → devilpower.top',
                         'ShadowCo → shadow-co.online',
                         'AvalonConquer → conqueravalon.com',
-                        'TRoyConquer → troyconquer.com',
+                        'TroyConquer → troyconquer.com',
                         'ZONEConquer → zone-servers.online',
-                        'Volcanoconquer → volcanoconquer.com',
-                        'TrueConquer → trueconquer.vip',
-                        'Majestic → majestic-co.top',
-                        'Apex-Co → apex-co.online',
+                        'VolcanoConquer → volcanoconquer.com',
+                        'Majestic-Co → majestic-co.top',
                         'EgyConquer → egyconquer.com',
-                        'NeonConquer → neonconquer.co190.com',
-                        'DragonStorm → dragonstorm.co190.com',
-                        'ImmortalSco → immortalsco.com'
+                        'ImmortalsCo → immortalsco.com',
+                        'StormCo99 → stormco99.online',
+                        'VoidConquer → voidconquer.online',
+                        'WarConquer → warconquer.com',
+                        'ConquerAway → conqueraway.com',
+                        'ImperioConquer → imperio.latinconquer.top',
+                        'Kemet-Co → website link coming soon'
                     ]
                 },
                 classes: {
@@ -688,8 +706,8 @@
                 macros: {
                     title: '🔥 Fire of Hell & Macros',
                     items: [
-                        'Fire of Hell Automation — Max damage output',
-                        'Custom Macro Support — One-click combos',
+                        'Fire of Hell Automation — configurable macro workflow',
+                        'Macro / Clicker — works with all Conquer Online versions',
                         'Memory Engine Optimization',
                         'Full protection systems'
                     ]

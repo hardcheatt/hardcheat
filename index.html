@@ -26,8 +26,8 @@
 
         /* ===== شريط التحديثات المتحرك ===== */
         .top-ticker {
-            background: linear-gradient(90deg, rgba(255,37,47,.15), rgba(255,45,120,.15));
-            border-bottom: 1px solid rgba(255,37,47,.2);
+            background: linear-gradient(90deg, rgba(0,243,255,.15), rgba(255,45,120,.15));
+            border-bottom: 1px solid rgba(0,243,255,.2);
             color: var(--cyan);
             font-family: 'Orbitron', sans-serif;
             font-size: 12px;
@@ -48,7 +48,7 @@
         .glow-grid {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
             background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,37,47,.12), transparent),
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,243,255,.12), transparent),
                 radial-gradient(ellipse 60% 40% at 90% 110%, rgba(255,45,120,.10), transparent);
         }
 
@@ -66,7 +66,7 @@
             font-size: 26px; font-weight: 900; letter-spacing: 3px;
             background: linear-gradient(90deg, var(--cyan), #fff, var(--magenta));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 12px rgba(255,37,47,.6));
+            filter: drop-shadow(0 0 12px rgba(0,243,255,.6));
         }
         .logo span { color: var(--magenta); -webkit-text-fill-color: var(--magenta); }
         nav ul { display: flex; gap: 32px; list-style: none; }
@@ -78,12 +78,12 @@
             content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
             background: var(--cyan); box-shadow: 0 0 10px var(--cyan); transition: .3s;
         }
-        nav a:hover { color: var(--cyan); text-shadow: 0 0 10px rgba(255,37,47,.7); }
+        nav a:hover { color: var(--cyan); text-shadow: 0 0 10px rgba(0,243,255,.7); }
         nav a:hover::after { width: 100%; }
         
         .header-actions { display: flex; align-items: center; gap: 12px; }
         .sound-toggle {
-            background: rgba(255,37,47,.08); border: 1px solid rgba(255,37,47,.3);
+            background: rgba(0,243,255,.08); border: 1px solid rgba(0,243,255,.3);
             color: var(--cyan); width: 38px; height: 38px; border-radius: 50%;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
             font-size: 16px; transition: .3s;
@@ -111,15 +111,15 @@
         .hero .tag {
             font-family: 'Orbitron', sans-serif; font-size: 13px; letter-spacing: 6px;
             color: var(--cyan); text-transform: uppercase; margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255,37,47,.8);
-            border: 1px solid rgba(255,37,47,.35); padding: 8px 20px; border-radius: 30px;
-            background: rgba(255,37,47,.05);
+            text-shadow: 0 0 15px rgba(0,243,255,.8);
+            border: 1px solid rgba(0,243,255,.35); padding: 8px 20px; border-radius: 30px;
+            background: rgba(0,243,255,.05);
         }
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(40px, 7vw, 88px); font-weight: 900; line-height: 1.05;
             margin-bottom: 22px;
-            text-shadow: 0 0 30px rgba(255,37,47,.5);
+            text-shadow: 0 0 30px rgba(0,243,255,.5);
         }
         .gradient-text {
             background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--purple), var(--cyan));
@@ -140,7 +140,7 @@
             background: transparent; text-transform: uppercase;
         }
         .btn:hover { background: var(--cyan); color: #04060f; box-shadow: 0 0 30px var(--cyan); transform: translateY(-3px); }
-        .btn.filled { background: var(--cyan); color: #04060f; box-shadow: 0 0 20px rgba(255,37,47,.5); }
+        .btn.filled { background: var(--cyan); color: #04060f; box-shadow: 0 0 20px rgba(0,243,255,.5); }
         .btn.filled:hover { background: transparent; color: var(--cyan); }
 
         .scroll-hint {
@@ -160,7 +160,7 @@
         .line {
             width: 90px; height: 3px; margin: 14px auto 0;
             background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
-            box-shadow: 0 0 15px rgba(255,37,47,.7);
+            box-shadow: 0 0 15px rgba(0,243,255,.7);
         }
 
         /* ===== بطاقات المزايا ===== */
@@ -170,7 +170,7 @@
         .card {
             position: relative;
             background: var(--panel);
-            border: 1px solid rgba(255,37,47,.18);
+            border: 1px solid rgba(0,243,255,.18);
             border-radius: 14px; padding: 28px 24px;
             backdrop-filter: blur(10px);
             cursor: pointer; transition: .35s; overflow: hidden;
@@ -180,7 +180,7 @@
             background: linear-gradient(90deg, var(--cyan), var(--magenta));
             opacity: 0; transition: .35s;
         }
-        .card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 15px 40px rgba(255,37,47,.15); }
+        .card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 15px 40px rgba(0,243,255,.15); }
         .card:hover::before { opacity: 1; }
         .card .icon { font-size: 34px; margin-bottom: 14px; display: block; }
         .card h3 { font-size: 20px; font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; }
@@ -200,14 +200,14 @@
             max-width: 450px; margin: 0 auto 35px; position: relative;
         }
         .search-box input {
-            width: 100%; background: rgba(255,37,47,.05);
-            border: 1px solid rgba(255,37,47,.3); border-radius: 30px;
+            width: 100%; background: rgba(0,243,255,.05);
+            border: 1px solid rgba(0,243,255,.3); border-radius: 30px;
             padding: 14px 24px 14px 50px; color: #fff; font-size: 16px;
             font-family: inherit; outline: none; transition: .3s;
         }
         .search-box input:focus {
-            border-color: var(--cyan); box-shadow: 0 0 20px rgba(255,37,47,.3);
-            background: rgba(255,37,47,.08);
+            border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,243,255,.3);
+            background: rgba(0,243,255,.08);
         }
         .search-box svg {
             position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
@@ -219,8 +219,8 @@
         }
         .server-chip {
             display: block;
-            background: rgba(255,37,47,.04);
-            border: 1px solid rgba(255,37,47,.22);
+            background: rgba(0,243,255,.04);
+            border: 1px solid rgba(0,243,255,.22);
             border-radius: 10px; padding: 18px; text-align: center;
             font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700;
             color: #cfefff; letter-spacing: 1px; transition: .3s; cursor: pointer;
@@ -228,8 +228,8 @@
         }
         .server-chip:hover {
             border-color: var(--cyan); color: var(--cyan);
-            box-shadow: 0 0 20px rgba(255,37,47,.3); transform: translateY(-3px);
-            background: rgba(255,37,47,.08);
+            box-shadow: 0 0 20px rgba(0,243,255,.3); transform: translateY(-3px);
+            background: rgba(0,243,255,.08);
         }
         .server-chip .ok { color: var(--green); font-size: 11px; display: block; margin-top: 6px; letter-spacing: 2px; }
         .server-note {
@@ -244,33 +244,33 @@
         }
         .tab {
             padding: 12px 26px; border-radius: 8px; font-weight: 700; font-size: 15px;
-            font-family: inherit; cursor: pointer; border: 1px solid rgba(255,37,47,.3);
-            background: rgba(255,37,47,.05); color: #cfefff; transition: .3s; letter-spacing: 1px;
+            font-family: inherit; cursor: pointer; border: 1px solid rgba(0,243,255,.3);
+            background: rgba(0,243,255,.05); color: #cfefff; transition: .3s; letter-spacing: 1px;
         }
-        .tab:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 15px rgba(255,37,47,.3); }
+        .tab:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 15px rgba(0,243,255,.3); }
         .tab.active {
-            background: linear-gradient(135deg, var(--cyan), #a80812);
-            color: #04060f; border-color: transparent; box-shadow: 0 0 25px rgba(255,37,47,.5);
+            background: linear-gradient(135deg, var(--cyan), #0098ff);
+            color: #04060f; border-color: transparent; box-shadow: 0 0 25px rgba(0,243,255,.5);
         }
         .display-box {
             background: var(--panel);
-            border: 1px solid rgba(255,37,47,.25);
+            border: 1px solid rgba(0,243,255,.25);
             border-radius: 14px; padding: 34px; min-height: 180px;
-            box-shadow: 0 0 40px rgba(255,37,47,.12);
+            box-shadow: 0 0 40px rgba(0,243,255,.12);
             backdrop-filter: blur(12px);
         }
         .display-box h3 {
             font-family: 'Orbitron', sans-serif; color: var(--cyan);
             margin-bottom: 18px; font-size: 20px; letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(255,37,47,.5);
+            text-shadow: 0 0 12px rgba(0,243,255,.5);
         }
         .display-box ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
         .display-box li {
-            background: rgba(255,37,47,.05); padding: 12px 16px; border-radius: 8px;
+            background: rgba(0,243,255,.05); padding: 12px 16px; border-radius: 8px;
             border-left: 3px solid var(--cyan); color: #d4e2ff; font-size: 15px; font-weight: 500;
             transition: .3s;
         }
-        .display-box li:hover { background: rgba(255,37,47,.12); transform: translateX(4px); }
+        .display-box li:hover { background: rgba(0,243,255,.12); transform: translateX(4px); }
 
         /* ===== ظهور تدريجي ===== */
         .reveal { opacity: 0; transform: translateY(40px); transition: .8s ease; }
@@ -279,7 +279,7 @@
         /* ===== الفوتر ===== */
         footer {
             position: relative; z-index: 1; text-align: center; padding: 50px 20px;
-            border-top: 1px solid rgba(255,37,47,.12);
+            border-top: 1px solid rgba(0,243,255,.12);
             background: rgba(4,6,15,.9);
         }
         footer .logo { font-size: 22px; margin-bottom: 16px; display: block; }
@@ -288,9 +288,9 @@
         .social {
             display: inline-flex; align-items: center; gap: 8px; color: #cfefff;
             text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 20px;
-            border: 1px solid rgba(255,37,47,.3); border-radius: 30px; transition: .3s;
+            border: 1px solid rgba(0,243,255,.3); border-radius: 30px; transition: .3s;
         }
-        .social:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 18px rgba(255,37,47,.4); transform: translateY(-2px); }
+        .social:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 18px rgba(0,243,255,.4); transform: translateY(-2px); }
         .social svg { width: 16px; height: 16px; fill: currentColor; }
         .warning { margin-top: 22px; color: #39446b; font-size: 12px; letter-spacing: 1px; }
 
@@ -301,7 +301,7 @@
         }
 
         /* ===== Premium polish ===== */
-        .hero { background: radial-gradient(ellipse at 50% 45%, rgba(255,37,47,.055), transparent 55%); }
+        .hero { background: radial-gradient(ellipse at 50% 45%, rgba(0,243,255,.055), transparent 55%); }
         .card, .server-chip, .display-box { box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 12px 34px rgba(0,0,0,.16); }
         .server-chip { min-height: 88px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; overflow-wrap: anywhere; }
         .server-chip .ok { letter-spacing: 1.2px; }
@@ -373,60 +373,6 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
         }
-    
-        /* ===== HARD CHEAT APP MATCH: angular red-neon product showcase ===== */
-        :root { --cyan:#ff252f; --magenta:#a80812; --purple:#ff5962; --green:#ff626a; --bg:#070607; --panel:rgba(13,8,9,.88); }
-        .top-ticker { background:linear-gradient(90deg,rgba(255,37,47,.16),rgba(90,0,5,.22)); border-color:rgba(255,37,47,.4); }
-        header { background:rgba(7,5,6,.94); border-bottom-color:rgba(255,37,47,.35); box-shadow:0 8px 30px rgba(0,0,0,.35); }
-        .logo { filter:drop-shadow(0 0 12px rgba(255,37,47,.45)); }
-        .glow-grid { background:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(255,37,47,.15),transparent),radial-gradient(ellipse 60% 40% at 90% 110%,rgba(168,8,18,.16),transparent); }
-        .hero { min-height:92vh; padding-top:180px; }
-        .hero h1 { text-shadow:0 0 32px rgba(255,37,47,.28); letter-spacing:1px; }
-        .hero .tag { color:#ff5a61; border-color:rgba(255,37,47,.5); background:rgba(255,37,47,.07); text-shadow:0 0 12px rgba(255,37,47,.35); }
-        .btn { border-color:#ff252f; color:#ff4a52; }
-        .btn:hover { background:#ff252f; color:#fff; box-shadow:0 0 30px rgba(255,37,47,.45); }
-        .btn.filled { background:linear-gradient(135deg,#ff343d,#a80812); color:#fff; border-color:#ff555c; box-shadow:0 0 24px rgba(255,37,47,.28),inset 0 1px rgba(255,255,255,.22); }
-        .card,.display-box,.server-chip,.tab { border-color:rgba(255,37,47,.28); background-color:rgba(15,9,10,.78); }
-        .card:hover,.server-chip:hover,.display-box { box-shadow:inset 0 1px rgba(255,255,255,.04),0 0 28px rgba(255,37,47,.09); }
-        .status { color:#ff5c64; border-color:rgba(255,37,47,.42); background:rgba(255,37,47,.08); box-shadow:0 0 12px rgba(255,37,47,.12); }
-        .status::before { color:#ff252f; }
-        .tab.active { background:linear-gradient(135deg,#ff343d,#970812); color:#fff; box-shadow:0 0 24px rgba(255,37,47,.3); }
-        .sound-toggle { border-color:rgba(255,37,47,.45); background:rgba(255,37,47,.09); color:#ff555c; }
-        .sound-toggle.active { background:linear-gradient(135deg,#ff343d,#a80812); color:white; box-shadow:0 0 18px rgba(255,37,47,.35); }
-        .app-preview { max-width:1120px; margin:0 auto; padding:0 24px 55px; position:relative; z-index:2; }
-        .app-window { background:linear-gradient(145deg,rgba(19,13,14,.97),rgba(5,5,6,.98)); border:1px solid #a81b22; border-radius:15px; overflow:hidden; box-shadow:0 0 0 1px rgba(255,37,47,.13),0 24px 80px rgba(0,0,0,.55),0 0 42px rgba(255,37,47,.12); position:relative; }
-        .app-window:before { content:""; position:absolute; inset:0; pointer-events:none; border:1px solid rgba(255,70,78,.4); border-radius:15px; clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
-        .app-topbar { display:flex; justify-content:space-between; align-items:center; gap:15px; padding:18px 24px; border-bottom:1px solid rgba(255,37,47,.28); background:linear-gradient(90deg,rgba(255,37,47,.08),transparent); }
-        .app-brand { font-family:Orbitron,sans-serif; font-weight:900; font-size:clamp(16px,2.5vw,25px); letter-spacing:1px; }
-        .app-brand span { color:#ff343d; }
-        .app-caption { color:#9d9295; font-size:11px; letter-spacing:3px; margin-top:4px; }
-        .app-version { border:1px solid rgba(255,37,47,.45); color:#ff626a; padding:7px 12px; font-size:11px; letter-spacing:1.5px; border-radius:5px; white-space:nowrap; }
-        .app-status-row { display:grid; grid-template-columns:repeat(3,1fr); border-bottom:1px solid rgba(255,37,47,.2); }
-        .app-status { padding:18px 22px; border-right:1px solid rgba(255,37,47,.16); min-width:0; }
-        .app-status:last-child { border-right:0; }
-        .app-label { color:#9c9296; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
-        .app-value { font-weight:700; font-size:16px; margin-top:7px; overflow-wrap:anywhere; }
-        .app-value.waiting { color:#ff555c; }
-        .app-content { padding:22px; }
-        .app-section-title { display:flex; align-items:center; gap:12px; font-family:Orbitron,sans-serif; font-size:clamp(16px,2.5vw,23px); font-weight:900; margin-bottom:8px; }
-        .app-section-title:before { content:""; width:5px; height:27px; border-radius:4px; background:#ff252f; box-shadow:0 0 12px rgba(255,37,47,.6); }
-        .app-subtitle { color:#a99fa2; margin:0 0 20px 17px; font-size:14px; }
-        .module-group { border:1px solid rgba(255,37,47,.25); border-radius:10px; padding:14px; margin-top:14px; background:rgba(0,0,0,.18); }
-        .module-group h3 { color:#ff6067; font-size:12px; letter-spacing:2px; margin:0 0 12px; }
-        .module-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-        .module { display:flex; align-items:center; gap:10px; border:1px solid rgba(255,37,47,.24); border-radius:7px; padding:12px; color:#e9e3e5; background:linear-gradient(110deg,rgba(255,37,47,.035),rgba(255,255,255,.012)); font-size:14px; }
-        .fake-switch { flex:0 0 35px; height:19px; border-radius:20px; border:1px solid #4b4547; background:#211f20; position:relative; }
-        .fake-switch:before { content:""; position:absolute; width:13px; height:13px; border-radius:50%; background:#ddd; left:3px; top:2px; box-shadow:0 0 4px #000; }
-        .app-bottom { display:flex; justify-content:space-between; gap:12px; padding:13px 22px; border-top:1px solid rgba(255,37,47,.25); color:#a79da0; font-size:10px; letter-spacing:2px; }
-        .app-bottom strong { color:#ff4b53; }
-        .login-strip { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
-        .mini-feature { border:1px solid rgba(255,37,47,.23); background:rgba(12,8,9,.8); padding:18px; border-radius:9px; }
-        .mini-feature b { color:#ff4c54; display:block; font-family:Orbitron,sans-serif; font-size:12px; margin-bottom:8px; }
-        .mini-feature p { color:#a99fa2; font-size:14px; line-height:1.5; }
-        .section-kicker { color:#ff525a; font-family:Orbitron,sans-serif; font-size:11px; letter-spacing:3px; margin-bottom:12px; }
-        @media(max-width:760px) { .app-status-row{grid-template-columns:1fr}.app-status{border-right:0;border-bottom:1px solid rgba(255,37,47,.16);padding:12px 16px}.module-grid{grid-template-columns:1fr 1fr}.app-content{padding:14px}.app-topbar{padding:14px}.app-bottom{flex-direction:column}.login-strip{grid-template-columns:1fr}.app-preview{padding-left:14px;padding-right:14px} }
-        @media(max-width:460px) { .module-grid{grid-template-columns:1fr}.app-version{font-size:9px;padding:6px} }
-
     </style>
 </head>
 <body>
@@ -451,8 +397,8 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle sound effects" aria-label="Toggle sound effects" aria-pressed="true">🔊</button>
-            <button class="sound-toggle music-toggle" id="musicToggle" onclick="toggleMusic()" title="Click to start optional background music" aria-label="Toggle background music" aria-pressed="false">🎵</button>
+            <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle sound effects" aria-label="Toggle sound effects">🔊</button>
+            <button class="sound-toggle music-toggle" id="musicToggle" onclick="toggleMusic()" title="Toggle optional background music" aria-label="Toggle background music">🎵</button>
             <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" onclick="playClick()">
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 CONTACT US
@@ -462,11 +408,12 @@
 
     <!-- ===== الهيرو ===== -->
     <section class="hero" id="home">
-        <div class="tag">PRIVATE GAMING SOLUTION · V7.0</div>
-        <h1>HARD<span class="gradient-text">CHEAT</span><br><span style="font-size:.48em;letter-spacing:7px;color:#c7c0c2">ULTIMATE CONTROL SYSTEM</span></h1>
+        <div class="tag">System Monitor & Memory Engine</div>
+        <h1>HARDCHEAT <span class="gradient-text">ULTIMATE</span></h1>
         <p>
-            واجهة موحّدة تجمع تسجيل الدخول، مراقبة الجلسة، وإدارة الوحدات في تصميم أحمر نيون مستوحى من التطبيق نفسه.<br>
-            License Access · System Monitor · Activation Control · Conquer Online
+            مع HardCheat.. السيطرة بقت في إيدك في كل مكان!<br>
+            Aimbot · Auto Jump · Speed & Combo · Fire of Hell · Macros
+            — كل ده في أداة واحدة لسيرفرات Conquer Online 2D.
         </p>
         <div class="hero-actions">
             <a href="#features" class="btn filled" onclick="playClick()">EXPLORE FEATURES</a>
@@ -474,37 +421,6 @@
         </div>
         <div class="scroll-hint">▼ Scroll Down</div>
     </section>
-
-    <!-- ===== REAL PRODUCT LOOK: login + control panel preview ===== -->
-    <div class="app-preview reveal" id="product-preview">
-        <div class="section-kicker">THE INTERFACE · HARD CHEAT V7.0</div>
-        <div class="app-window">
-            <div class="app-topbar">
-                <div><div class="app-brand">HARD<span>CHEAT</span> <small style="color:#aaa;font-size:11px">/ CONTROL PANEL</small></div><div class="app-caption">PRIVATE GAMING SOLUTION</div></div>
-                <div class="app-version">ULTIMATE · V7.0</div>
-            </div>
-            <div class="app-status-row">
-                <div class="app-status"><div class="app-label">GAME PROCESS</div><div class="app-value waiting">Waiting for process...</div></div>
-                <div class="app-status"><div class="app-label">ACCOUNT / PID</div><div class="app-value">—</div></div>
-                <div class="app-status"><div class="app-label">SESSION</div><div class="app-value waiting">Not connected</div></div>
-            </div>
-            <div class="app-content">
-                <div class="app-section-title">ACTIVATION CONTROL</div>
-                <div class="app-subtitle">A preview of the modules shown in the desktop application.</div>
-                <div class="module-group"><h3>ATTACK MODULES</h3><div class="module-grid">
-                    <div class="module"><span class="fake-switch"></span>Anti Stun</div><div class="module"><span class="fake-switch"></span>Auto Melee</div><div class="module"><span class="fake-switch"></span>Magic Range</div><div class="module"><span class="fake-switch"></span>Down ZFLT</div><div class="module"><span class="fake-switch"></span>Fast Down</div>
-                </div></div>
-                <div class="module-group"><h3>HARD MODULES</h3><div class="module-grid">
-                    <div class="module"><span class="fake-switch"></span>Speed ZFLT</div><div class="module"><span class="fake-switch"></span>NOS Down</div><div class="module"><span class="fake-switch"></span>FPS Limit</div><div class="module"><span class="fake-switch"></span>R-Click Speed</div>
-                </div></div>
-                <div class="login-strip">
-                    <div class="mini-feature"><b>01 / LICENSE GATE</b><p>License-key login, optional key remembrance, and an authorization-first entry screen.</p></div>
-                    <div class="mini-feature"><b>02 / SESSION MONITOR</b><p>Game process, account/PID and connection status presented in one consistent control interface.</p></div>
-                </div>
-            </div>
-            <div class="app-bottom"><span>◆ AUTHORIZED ACCESS ONLY</span><span>ENVIRONMENT: <strong>DX9</strong></span><span>HARDCHEAT V7.0</span></div>
-        </div>
-    </div>
 
     <!-- ===== المزايا ===== -->
     <section id="features">
@@ -662,109 +578,97 @@
     </footer>
 
     <script>
-        // ===== Sound effects + optional synthesized ambient music =====
+        // ===== نظام الأصوات التفاعلية (Web Audio API) =====
         let soundEnabled = true;
         let audioCtx = null;
         let musicEnabled = false;
         let musicTimer = null;
+        let musicNodes = [];
         let musicStep = 0;
 
         function getAudioContext() {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContextClass) throw new Error("Web Audio is not supported in this browser.");
-            if (!audioCtx) audioCtx = new AudioContextClass();
-            if (audioCtx.state === "suspended") audioCtx.resume();
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
             return audioCtx;
         }
 
         function toggleSound() {
             soundEnabled = !soundEnabled;
-            const button = document.getElementById("soundToggle");
-            button.innerText = soundEnabled ? "🔊" : "🔇";
-            button.classList.toggle("active", soundEnabled);
-            button.setAttribute("aria-pressed", String(soundEnabled));
-            if (soundEnabled) playClick(true);
+            const button = document.getElementById('soundToggle');
+            button.innerText = soundEnabled ? '🔊' : '🔇';
+            button.classList.toggle('active', soundEnabled);
+            button.setAttribute('aria-pressed', String(soundEnabled));
+            if (soundEnabled) playClick();
         }
 
-        function playClick(force = false) {
-            if (!soundEnabled && !force) return;
-            try {
-                const ctx = getAudioContext();
-                const now = ctx.currentTime;
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                const filter = ctx.createBiquadFilter();
-                osc.type = "triangle";
-                osc.frequency.setValueAtTime(720, now);
-                osc.frequency.exponentialRampToValueAtTime(260, now + 0.095);
-                filter.type = "lowpass";
-                filter.frequency.setValueAtTime(1800, now);
-                gain.gain.setValueAtTime(0.0001, now);
-                gain.gain.exponentialRampToValueAtTime(0.055, now + 0.012);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
-                osc.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-                osc.start(now); osc.stop(now + 0.13);
-            } catch (e) {
-                console.warn("Sound effects unavailable:", e);
-            }
-        }
-
+        // Optional, quiet synthesized cyber-ambient soundtrack; no external audio file required.
         function playMusicNote() {
             if (!musicEnabled) return;
             try {
                 const ctx = getAudioContext();
                 const now = ctx.currentTime;
-                // Low-volume cyber ambient sequence; generated locally, no external MP3 needed.
-                const notes = [110, 130.81, 146.83, 164.81, 146.83, 123.47, 98, 130.81];
+                const notes = [55, 65.41, 73.42, 82.41, 65.41, 49, 73.42, 61.74];
                 const base = notes[musicStep % notes.length];
                 musicStep++;
-                [base, base * 2, base * 1.5].forEach((frequency, index) => {
+                [base, base * 1.5].forEach((frequency, index) => {
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     const filter = ctx.createBiquadFilter();
-                    osc.type = index === 0 ? "sine" : "triangle";
+                    osc.type = index === 0 ? 'sine' : 'triangle';
                     osc.frequency.setValueAtTime(frequency, now);
-                    filter.type = "lowpass";
-                    filter.frequency.setValueAtTime(index === 0 ? 260 : 520, now);
-                    const volume = index === 0 ? 0.025 : 0.006;
+                    filter.type = 'lowpass';
+                    filter.frequency.setValueAtTime(420, now);
                     gain.gain.setValueAtTime(0.0001, now);
-                    gain.gain.linearRampToValueAtTime(volume, now + 0.25);
-                    gain.gain.setTargetAtTime(0.0001, now + 1.35, 0.22);
+                    gain.gain.linearRampToValueAtTime(index === 0 ? 0.025 : 0.009, now + 0.35);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
                     osc.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-                    osc.start(now); osc.stop(now + 2.15);
+                    osc.start(now); osc.stop(now + 2.25);
                 });
-            } catch (e) {
-                console.warn("Background music unavailable:", e);
-            }
+            } catch (e) { /* Audio is optional; the page remains fully usable if unavailable. */ }
         }
 
         function toggleMusic() {
-            const button = document.getElementById("musicToggle");
-            if (!musicEnabled) {
-                try {
-                    getAudioContext(); // Audio must be initialized from this user click.
-                    musicEnabled = true;
-                    button.classList.add("active");
-                    button.setAttribute("aria-pressed", "true");
-                    button.innerText = "🎶";
-                    button.title = "Turn background music off";
-                    playMusicNote();
-                    musicTimer = window.setInterval(playMusicNote, 1900);
-                } catch (e) {
-                    musicEnabled = false;
-                    button.classList.remove("active");
-                    button.setAttribute("aria-pressed", "false");
-                    button.title = "Audio is not supported in this browser";
-                }
+            musicEnabled = !musicEnabled;
+            const button = document.getElementById('musicToggle');
+            button.classList.toggle('active', musicEnabled);
+            button.setAttribute('aria-pressed', String(musicEnabled));
+            button.title = musicEnabled ? 'Turn background music off' : 'Turn background music on';
+            button.innerText = musicEnabled ? '🎶' : '🎵';
+            if (musicEnabled) {
+                try { getAudioContext(); playMusicNote(); musicTimer = window.setInterval(playMusicNote, 2200); }
+                catch (e) { musicEnabled = false; button.classList.remove('active'); button.innerText = '🎵'; }
             } else {
-                musicEnabled = false;
                 if (musicTimer) window.clearInterval(musicTimer);
                 musicTimer = null;
-                button.classList.remove("active");
-                button.setAttribute("aria-pressed", "false");
-                button.innerText = "🎵";
-                button.title = "Turn background music on";
             }
+        }
+
+        function playClick() {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch(e) {}
         }
 
         // ===== ميزة البحث السريع عن الألعاب =====
@@ -792,7 +696,7 @@
         resize();
         window.addEventListener('resize', resize);
 
-        const COLORS = ['#ff252f', '#ff2d78', '#7b2dff', '#00ff88'];
+        const COLORS = ['#00f3ff', '#ff2d78', '#7b2dff', '#00ff88'];
         class Particle {
             constructor() {
                 this.x = Math.random() * W;
@@ -835,7 +739,7 @@
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = 'rgba(255,37,47,' + (0.12 * (1 - dist / 120)) + ')';
+                        ctx.strokeStyle = 'rgba(0,243,255,' + (0.12 * (1 - dist / 120)) + ')';
                         ctx.lineWidth = 0.6;
                         ctx.stroke();
                     }

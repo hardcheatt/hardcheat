@@ -373,6 +373,89 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
         }
+    
+
+        /* ===== HARDCHEAT subtle horror polish: style-only refinement ===== */
+        :root {
+            --cyan: #ff252f;
+            --magenta: #a80812;
+            --purple: #5b0a10;
+            --green: #ff5a61;
+            --bg: #070506;
+            --panel: rgba(15, 8, 9, 0.88);
+        }
+        body {
+            background:
+              radial-gradient(ellipse at 50% 0%, rgba(110, 7, 14, .22), transparent 48%),
+              radial-gradient(ellipse at 0% 70%, rgba(70, 5, 10, .16), transparent 42%),
+              var(--bg);
+        }
+        .glow-grid {
+            background:
+              radial-gradient(ellipse 72% 42% at 50% -10%, rgba(255, 35, 47, .11), transparent 72%),
+              radial-gradient(ellipse 48% 34% at 95% 95%, rgba(110, 8, 16, .12), transparent 75%),
+              linear-gradient(135deg, rgba(255,255,255,.012) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.012) 50%, rgba(255,255,255,.012) 75%, transparent 75%);
+            background-size: auto, auto, 9px 9px;
+        }
+        header { padding: 12px 42px; border-bottom-color: rgba(255, 37, 47, .22); }
+        .logo { font-size: 24px; letter-spacing: 2.5px; filter: drop-shadow(0 0 8px rgba(255,37,47,.3)); }
+        nav ul { gap: 26px; }
+        nav a { font-size: 14px; }
+        .hero { padding-top: 142px; padding-bottom: 48px; }
+        .hero .tag { font-size: 11px; letter-spacing: 4.5px; padding: 7px 17px; margin-bottom: 16px; }
+        .hero h1 { letter-spacing: -1.2px; text-shadow: 0 0 22px rgba(255, 30, 42, .2); }
+        .hero p { max-width: 760px; }
+        .btn { padding: 12px 25px; border-radius: 8px 3px 8px 3px; font-size: 14px; letter-spacing: .5px; }
+        .btn.filled { box-shadow: 0 0 14px rgba(255, 30, 42, .24), inset 0 1px 0 rgba(255,255,255,.16); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(255, 30, 42, .28); }
+        section { padding-top: 66px; padding-bottom: 66px; }
+        .section-title { margin-bottom: 30px; }
+        .section-title h2 { letter-spacing: .8px; }
+        .section-title p { font-size: 14px; }
+        .features-grid { gap: 16px; }
+        .card {
+            padding: 22px 20px;
+            border-radius: 10px 3px 10px 3px;
+            border-color: rgba(255, 42, 52, .22);
+            background: linear-gradient(145deg, rgba(25, 10, 12, .9), rgba(9, 7, 8, .96));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 10px 26px rgba(0,0,0,.24);
+            position: relative;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 26px; height: 26px;
+            border-top: 1px solid rgba(255, 55, 65, .4);
+            border-right: 1px solid rgba(255, 55, 65, .4);
+            border-radius: 0 3px 0 0;
+            pointer-events: none;
+        }
+        .card:hover { transform: translateY(-4px); border-color: rgba(255, 52, 61, .72); box-shadow: 0 12px 28px rgba(255,20,32,.1); }
+        .card .icon { font-size: 30px; margin-bottom: 11px; filter: drop-shadow(0 0 7px rgba(255,37,47,.22)); }
+        .card h3 { font-size: 18px; margin-bottom: 7px; }
+        .card p { font-size: 14px; line-height: 1.55; }
+        .server-chip, .display-box, .tab, .social {
+            border-radius: 8px 3px 8px 3px;
+            border-color: rgba(255, 42, 52, .26);
+        }
+        .server-chip:hover, .tab:hover, .social:hover { box-shadow: 0 0 13px rgba(255,30,42,.18); }
+        .tab { padding: 9px 15px; font-size: 13px; }
+        .sound-toggle { width: 35px; height: 35px; border-radius: 8px 3px 8px 3px; }
+        .sound-toggle:hover, .sound-toggle.active { box-shadow: 0 0 12px rgba(255,30,42,.32); }
+        .top-ticker { font-size: 11px; padding: 5px 0; }
+        footer { border-top-color: rgba(255, 37, 47, .2); }
+        @media (max-width: 768px) {
+            header { padding: 10px 16px; }
+            nav ul { gap: 13px; }
+            .hero { padding-top: 125px; padding-bottom: 38px; }
+            section { padding-top: 48px; padding-bottom: 48px; }
+            .card { padding: 18px 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+        }
+
     </style>
 </head>
 <body>
@@ -578,18 +661,45 @@
     </footer>
 
     <script>
-        // ===== نظام الأصوات التفاعلية (Web Audio API) =====
+        // ===== Sound effects + real background track (hard.mp3) =====
         let soundEnabled = true;
         let audioCtx = null;
         let musicEnabled = false;
-        let musicTimer = null;
-        let musicNodes = [];
-        let musicStep = 0;
+        let autoplayNeedsGesture = false;
+        const backgroundMusic = new Audio('./hard.mp3');
+        backgroundMusic.loop = true;
+        backgroundMusic.preload = 'auto';
+        backgroundMusic.volume = 0.35;
 
         function getAudioContext() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             if (audioCtx.state === 'suspended') audioCtx.resume();
             return audioCtx;
+        }
+
+        function setMusicButton(isOn, message) {
+            const button = document.getElementById('musicToggle');
+            musicEnabled = isOn;
+            button.classList.toggle('active', isOn);
+            button.setAttribute('aria-pressed', String(isOn));
+            button.innerText = isOn ? '🎶' : '🎵';
+            button.title = message || (isOn ? 'Turn background music off' : 'Turn background music on');
+        }
+
+        async function startBackgroundMusic() {
+            try {
+                backgroundMusic.currentTime = backgroundMusic.currentTime || 0;
+                await backgroundMusic.play();
+                setMusicButton(true, 'Turn background music off');
+                autoplayNeedsGesture = false;
+                return true;
+            } catch (error) {
+                // Browsers commonly block audible autoplay until the visitor interacts once.
+                autoplayNeedsGesture = true;
+                setMusicButton(false, 'اضغط مرة واحدة في أي مكان بالصفحة لتشغيل الموسيقى');
+                console.info('Autoplay was blocked or hard.mp3 is not available:', error);
+                return false;
+            }
         }
 
         function toggleSound() {
@@ -601,47 +711,38 @@
             if (soundEnabled) playClick();
         }
 
-        // Optional, quiet synthesized cyber-ambient soundtrack; no external audio file required.
-        function playMusicNote() {
-            if (!musicEnabled) return;
-            try {
-                const ctx = getAudioContext();
-                const now = ctx.currentTime;
-                const notes = [55, 65.41, 73.42, 82.41, 65.41, 49, 73.42, 61.74];
-                const base = notes[musicStep % notes.length];
-                musicStep++;
-                [base, base * 1.5].forEach((frequency, index) => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    const filter = ctx.createBiquadFilter();
-                    osc.type = index === 0 ? 'sine' : 'triangle';
-                    osc.frequency.setValueAtTime(frequency, now);
-                    filter.type = 'lowpass';
-                    filter.frequency.setValueAtTime(420, now);
-                    gain.gain.setValueAtTime(0.0001, now);
-                    gain.gain.linearRampToValueAtTime(index === 0 ? 0.025 : 0.009, now + 0.35);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
-                    osc.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-                    osc.start(now); osc.stop(now + 2.25);
-                });
-            } catch (e) { /* Audio is optional; the page remains fully usable if unavailable. */ }
-        }
-
-        function toggleMusic() {
-            musicEnabled = !musicEnabled;
-            const button = document.getElementById('musicToggle');
-            button.classList.toggle('active', musicEnabled);
-            button.setAttribute('aria-pressed', String(musicEnabled));
-            button.title = musicEnabled ? 'Turn background music off' : 'Turn background music on';
-            button.innerText = musicEnabled ? '🎶' : '🎵';
+        async function toggleMusic() {
             if (musicEnabled) {
-                try { getAudioContext(); playMusicNote(); musicTimer = window.setInterval(playMusicNote, 2200); }
-                catch (e) { musicEnabled = false; button.classList.remove('active'); button.innerText = '🎵'; }
-            } else {
-                if (musicTimer) window.clearInterval(musicTimer);
-                musicTimer = null;
+                backgroundMusic.pause();
+                setMusicButton(false, 'Turn background music on');
+                return;
+            }
+            const ok = await startBackgroundMusic();
+            if (!ok) {
+                const button = document.getElementById('musicToggle');
+                button.title = 'لم يبدأ الصوت. تأكد من رفع hard.mp3 بجوار index.html ثم اضغط مرة أخرى.';
+                console.error('HARDCHEAT: Could not play ./hard.mp3. Confirm the file exists beside index.html.');
             }
         }
+
+        // Try to start as soon as the page opens. If the browser blocks autoplay,
+        // start on the first user gesture anywhere on the page (except the music button,
+        // which already has its own toggle handler).
+        window.addEventListener('DOMContentLoaded', () => {
+            startBackgroundMusic();
+        });
+        async function startMusicAfterFirstGesture(event) {
+            if (!autoplayNeedsGesture) return;
+            if (event && event.target && event.target.closest && event.target.closest('#musicToggle')) return;
+            if (musicEnabled) return;
+            await startBackgroundMusic();
+            if (musicEnabled) {
+                document.removeEventListener('pointerdown', startMusicAfterFirstGesture, true);
+                document.removeEventListener('keydown', startMusicAfterFirstGesture, true);
+            }
+        }
+        document.addEventListener('pointerdown', startMusicAfterFirstGesture, true);
+        document.addEventListener('keydown', startMusicAfterFirstGesture, true);
 
         function playClick() {
             if (!soundEnabled) return;

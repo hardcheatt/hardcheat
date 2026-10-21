@@ -1,733 +1,360 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARDCHEAT | ULTIMATE CONTROL</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --cyan: #00f3ff;
-            --magenta: #ff2d78;
-            --purple: #7b2dff;
-            --green: #00ff88;
-            --bg: #04060f;
-            --panel: rgba(10, 20, 40, 0.75);
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            background: var(--bg);
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            overflow-x: hidden;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090c">
+  <meta name="description" content="عرض تعريفي لمشروع واجهة تطبيق Windows بتصميم داكن وأحمر.">
+  <title>HARD | Windows Project</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #09090c;
+      --surface: #111115;
+      --surface-raised: #17171c;
+      --text: #f5f2f2;
+      --muted: #aaa2a5;
+      --accent: #f32635;
+      --accent-bright: #ff4c57;
+      --line: rgba(255, 255, 255, .09);
+      --content: 1120px;
+    }
 
-        /* ===== شريط التحديثات المتحرك ===== */
-        .top-ticker {
-            background: linear-gradient(90deg, rgba(0,243,255,.15), rgba(255,45,120,.15));
-            border-bottom: 1px solid rgba(0,243,255,.2);
-            color: var(--cyan);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            padding: 6px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1001;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .top-ticker marquee { font-weight: 700; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% -20%, rgba(243, 38, 53, .18), transparent 48%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #ff8990;
+      outline-offset: 4px;
+    }
+    .wrap { width: min(var(--content), calc(100% - 40px)); margin-inline: auto; }
 
-        /* ===== خلفية متحركة ===== */
-        #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .glow-grid {
-            position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,243,255,.12), transparent),
-                radial-gradient(ellipse 60% 40% at 90% 110%, rgba(255,45,120,.10), transparent);
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 9, 12, .86);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(243, 38, 53, .55);
+      border-radius: 10px;
+      background: rgba(243, 38, 53, .12);
+      color: var(--accent-bright);
+      box-shadow: 0 0 24px rgba(243, 38, 53, .16);
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--accent-bright); }
 
-        /* ===== الهيدر ===== */
-        header {
-            position: fixed; top: 32px; left: 0; right: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 50px;
-            background: rgba(4, 6, 15, 0.88);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.15);
-        }
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 26px; font-weight: 900; letter-spacing: 3px;
-            background: linear-gradient(90deg, var(--cyan), #fff, var(--magenta));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 12px rgba(0,243,255,.6));
-        }
-        .logo span { color: var(--magenta); -webkit-text-fill-color: var(--magenta); }
-        nav ul { display: flex; gap: 32px; list-style: none; }
-        nav a {
-            color: #9aa7c7; text-decoration: none; font-weight: 600; font-size: 15px;
-            letter-spacing: 1px; transition: .3s; position: relative;
-        }
-        nav a::after {
-            content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
-            background: var(--cyan); box-shadow: 0 0 10px var(--cyan); transition: .3s;
-        }
-        nav a:hover { color: var(--cyan); text-shadow: 0 0 10px rgba(0,243,255,.7); }
-        nav a:hover::after { width: 100%; }
-        
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .sound-toggle {
-            background: rgba(0,243,255,.08); border: 1px solid rgba(0,243,255,.3);
-            color: var(--cyan); width: 38px; height: 38px; border-radius: 50%;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            font-size: 16px; transition: .3s;
-        }
-        .sound-toggle:hover { background: var(--cyan); color: #04060f; box-shadow: 0 0 15px var(--cyan); }
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 610px;
+      align-items: center;
+      padding-block: 90px;
+      overflow: hidden;
+    }
+    .hero::before {
+      position: absolute;
+      inset: 8% 8% auto auto;
+      width: min(44vw, 460px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(243, 38, 53, .12);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 38, 53, .11), transparent 68%);
+      content: "";
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 760px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px;
+      border: 1px solid rgba(243, 38, 53, .3);
+      border-radius: 999px;
+      background: rgba(243, 38, 53, .07);
+      color: #ff9ca3;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+      content: "";
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-block: 22px 16px;
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+    .accent { color: var(--accent-bright); }
+    .hero-copy {
+      max-width: 640px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 19px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 10px;
+      background: var(--surface-raised);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, .3); }
+    .button-primary {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #f32635, #c91525);
+      box-shadow: 0 8px 28px rgba(243, 38, 53, .2);
+    }
+    .button-primary:hover { background: linear-gradient(135deg, #ff4c57, #df1c2d); }
 
-        .fb-btn {
-            display: flex; align-items: center; gap: 8px;
-            background: linear-gradient(135deg, #1877f2, #0d5fd4);
-            color: #fff; text-decoration: none; font-weight: 700; font-size: 14px;
-            padding: 10px 22px; border-radius: 30px;
-            box-shadow: 0 0 18px rgba(24,119,242,.45);
-            transition: .3s; border: none; cursor: pointer; font-family: inherit;
-        }
-        .fb-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(24,119,242,.8); }
-        .fb-btn svg { width: 18px; height: 18px; fill: #fff; }
+    .section { padding-block: 82px; border-top: 1px solid var(--line); }
+    .section-heading { max-width: 650px; margin-bottom: 30px; }
+    .section-heading h2 { margin-bottom: 8px; font-size: clamp(27px, 4vw, 40px); }
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      min-height: 205px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(255,255,255,.035), transparent 70%), var(--surface);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(243, 38, 53, .5); }
+    .card-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 17px;
+      place-items: center;
+      border: 1px solid rgba(243, 38, 53, .25);
+      border-radius: 12px;
+      background: rgba(243, 38, 53, .1);
+      color: var(--accent-bright);
+      font-size: 19px;
+    }
+    .card h3 { margin-bottom: 7px; font-size: 18px; }
+    .card p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
 
-        /* ===== الهيرو ===== */
-        .hero {
-            position: relative; z-index: 1;
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 160px 20px 60px;
-        }
-        .hero .tag {
-            font-family: 'Orbitron', sans-serif; font-size: 13px; letter-spacing: 6px;
-            color: var(--cyan); text-transform: uppercase; margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(0,243,255,.8);
-            border: 1px solid rgba(0,243,255,.35); padding: 8px 20px; border-radius: 30px;
-            background: rgba(0,243,255,.05);
-        }
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(40px, 7vw, 88px); font-weight: 900; line-height: 1.05;
-            margin-bottom: 22px;
-            text-shadow: 0 0 30px rgba(0,243,255,.5);
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--purple), var(--cyan));
-            background-size: 300% 100%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: flow 6s linear infinite;
-        }
-        @keyframes flow { to { background-position: 300% 0; } }
-        .hero p {
-            color: #8fa0c8; font-size: 19px; max-width: 720px; margin-bottom: 40px;
-            font-weight: 500; line-height: 1.6;
-        }
-        .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
-        .btn {
-            padding: 14px 34px; border-radius: 8px; font-weight: 700; font-size: 16px;
-            text-decoration: none; letter-spacing: 1px; transition: .3s; font-family: inherit;
-            cursor: pointer; border: 2px solid var(--cyan); color: var(--cyan);
-            background: transparent; text-transform: uppercase;
-        }
-        .btn:hover { background: var(--cyan); color: #04060f; box-shadow: 0 0 30px var(--cyan); transform: translateY(-3px); }
-        .btn.filled { background: var(--cyan); color: #04060f; box-shadow: 0 0 20px rgba(0,243,255,.5); }
-        .btn.filled:hover { background: transparent; color: var(--cyan); }
+    .project-panel {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 30px;
+      align-items: center;
+      padding: clamp(22px, 5vw, 42px);
+      border: 1px solid rgba(243, 38, 53, .22);
+      border-radius: 18px;
+      background: linear-gradient(120deg, rgba(243, 38, 53, .09), transparent 58%), var(--surface);
+    }
+    .project-panel h2 { margin-bottom: 12px; font-size: clamp(25px, 4vw, 35px); }
+    .project-panel p { margin-bottom: 0; color: var(--muted); }
+    .project-facts { display: grid; gap: 10px; }
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .18);
+      font-size: 13px;
+    }
+    .fact span:first-child { color: var(--muted); }
+    .fact span:last-child { font-weight: 700; }
 
-        .scroll-hint {
-            margin-top: 60px; color: #4a5578; font-size: 13px; letter-spacing: 3px;
-            animation: float 2s ease-in-out infinite; text-transform: uppercase;
-        }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+    .notice {
+      padding: 18px 20px;
+      border-right: 3px solid var(--accent);
+      border-radius: 8px;
+      background: rgba(243, 38, 53, .07);
+      color: #e7dfe1;
+    }
+    .notice strong { color: #ff9ca3; }
+    footer { padding-block: 26px; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 15px; font-size: 13px; }
+    .footer-inner p { margin: 0; }
 
-        /* ===== الأقسام ===== */
-        section { position: relative; z-index: 1; padding: 90px 30px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 {
-            font-family: 'Orbitron', sans-serif; font-size: clamp(26px, 4vw, 42px);
-            font-weight: 900; letter-spacing: 2px; margin-bottom: 14px;
-        }
-        .section-title p { color: #8fa0c8; font-size: 17px; }
-        .line {
-            width: 90px; height: 3px; margin: 14px auto 0;
-            background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
-            box-shadow: 0 0 15px rgba(0,243,255,.7);
-        }
-
-        /* ===== بطاقات المزايا ===== */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px;
-        }
-        .card {
-            position: relative;
-            background: var(--panel);
-            border: 1px solid rgba(0,243,255,.18);
-            border-radius: 14px; padding: 28px 24px;
-            backdrop-filter: blur(10px);
-            cursor: pointer; transition: .35s; overflow: hidden;
-        }
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            opacity: 0; transition: .35s;
-        }
-        .card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 15px 40px rgba(0,243,255,.15); }
-        .card:hover::before { opacity: 1; }
-        .card .icon { font-size: 34px; margin-bottom: 14px; display: block; }
-        .card h3 { font-size: 20px; font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; }
-        .card p { color: #8fa0c8; font-size: 14.5px; line-height: 1.5; }
-        .status {
-            display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 700;
-            letter-spacing: 1.5px; padding: 5px 14px; border-radius: 20px; text-transform: uppercase;
-            color: var(--green); border: 1px solid rgba(0,255,136,.4);
-            background: rgba(0,255,136,.08);
-            box-shadow: 0 0 12px rgba(0,255,136,.3);
-        }
-        .status::before { content: '● '; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
-
-        /* ===== قسم الألعاب مع البحث ===== */
-        .search-box {
-            max-width: 450px; margin: 0 auto 35px; position: relative;
-        }
-        .search-box input {
-            width: 100%; background: rgba(0,243,255,.05);
-            border: 1px solid rgba(0,243,255,.3); border-radius: 30px;
-            padding: 14px 24px 14px 50px; color: #fff; font-size: 16px;
-            font-family: inherit; outline: none; transition: .3s;
-        }
-        .search-box input:focus {
-            border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,243,255,.3);
-            background: rgba(0,243,255,.08);
-        }
-        .search-box svg {
-            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
-            width: 20px; height: 20px; fill: var(--cyan); opacity: 0.8;
-        }
-
-        .servers-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;
-        }
-        .server-chip {
-            display: block;
-            background: rgba(0,243,255,.04);
-            border: 1px solid rgba(0,243,255,.22);
-            border-radius: 10px; padding: 18px; text-align: center;
-            font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700;
-            color: #cfefff; letter-spacing: 1px; transition: .3s; cursor: pointer;
-            text-decoration: none; position: relative; overflow: hidden;
-        }
-        .server-chip:hover {
-            border-color: var(--cyan); color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0,243,255,.3); transform: translateY(-3px);
-            background: rgba(0,243,255,.08);
-        }
-        .server-chip .ok { color: var(--green); font-size: 11px; display: block; margin-top: 6px; letter-spacing: 2px; }
-        .server-note {
-            text-align: center; color: #5a6a92; font-size: 14px; margin-top: 22px;
-            font-weight: 600;
-        }
-
-        /* ===== صندوق التفاصيل التفاعلي ===== */
-        .control-panel { margin-top: 50px; }
-        .control-tabs {
-            display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 26px;
-        }
-        .tab {
-            padding: 12px 26px; border-radius: 8px; font-weight: 700; font-size: 15px;
-            font-family: inherit; cursor: pointer; border: 1px solid rgba(0,243,255,.3);
-            background: rgba(0,243,255,.05); color: #cfefff; transition: .3s; letter-spacing: 1px;
-        }
-        .tab:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 15px rgba(0,243,255,.3); }
-        .tab.active {
-            background: linear-gradient(135deg, var(--cyan), #0098ff);
-            color: #04060f; border-color: transparent; box-shadow: 0 0 25px rgba(0,243,255,.5);
-        }
-        .display-box {
-            background: var(--panel);
-            border: 1px solid rgba(0,243,255,.25);
-            border-radius: 14px; padding: 34px; min-height: 180px;
-            box-shadow: 0 0 40px rgba(0,243,255,.12);
-            backdrop-filter: blur(12px);
-        }
-        .display-box h3 {
-            font-family: 'Orbitron', sans-serif; color: var(--cyan);
-            margin-bottom: 18px; font-size: 20px; letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(0,243,255,.5);
-        }
-        .display-box ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-        .display-box li {
-            background: rgba(0,243,255,.05); padding: 12px 16px; border-radius: 8px;
-            border-left: 3px solid var(--cyan); color: #d4e2ff; font-size: 15px; font-weight: 500;
-            transition: .3s;
-        }
-        .display-box li:hover { background: rgba(0,243,255,.12); transform: translateX(4px); }
-
-        /* ===== ظهور تدريجي ===== */
-        .reveal { opacity: 0; transform: translateY(40px); transition: .8s ease; }
-        .reveal.show { opacity: 1; transform: translateY(0); }
-
-        /* ===== الفوتر ===== */
-        footer {
-            position: relative; z-index: 1; text-align: center; padding: 50px 20px;
-            border-top: 1px solid rgba(0,243,255,.12);
-            background: rgba(4,6,15,.9);
-        }
-        footer .logo { font-size: 22px; margin-bottom: 16px; display: block; }
-        footer p { color: #5a6a92; font-size: 14px; margin-bottom: 18px; }
-        .social-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .social {
-            display: inline-flex; align-items: center; gap: 8px; color: #cfefff;
-            text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 20px;
-            border: 1px solid rgba(0,243,255,.3); border-radius: 30px; transition: .3s;
-        }
-        .social:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 18px rgba(0,243,255,.4); transform: translateY(-2px); }
-        .social svg { width: 16px; height: 16px; fill: currentColor; }
-        .warning { margin-top: 22px; color: #39446b; font-size: 12px; letter-spacing: 1px; }
-
-        @media (max-width: 768px) {
-            header { padding: 12px 20px; flex-wrap: wrap; gap: 10px; top: 28px; }
-            nav ul { gap: 16px; }
-            .hero h1 { font-size: 40px; }
-        }
-
-        /* ===== Premium polish ===== */
-        .hero { background: radial-gradient(ellipse at 50% 45%, rgba(0,243,255,.055), transparent 55%); }
-        .card, .server-chip, .display-box { box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 12px 34px rgba(0,0,0,.16); }
-        .server-chip { min-height: 88px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; overflow-wrap: anywhere; }
-        .server-chip .ok { letter-spacing: 1.2px; }
-        .server-chip.no-link { cursor: default; color: #aeb9d5; border-style: dashed; border-color: rgba(255,45,120,.35); background: rgba(255,45,120,.035); }
-        .server-chip.no-link:hover { transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 12px 34px rgba(0,0,0,.16); color: #aeb9d5; border-color: rgba(255,45,120,.35); }
-        .server-chip .pending { color: #ff8bb0; }
-        .section-title h2 { text-wrap: balance; }
-        .btn, .tab, .fb-btn { -webkit-tap-highlight-color: transparent; }
-        @media (max-width: 768px) {
-            header { justify-content: center; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 12px 18px; }
-            .header-actions { justify-content: center; }
-            section { padding: 72px 18px; }
-            .display-box { padding: 22px 18px; }
-        }
-    </style>
+    @media (max-width: 760px) {
+      .nav { min-height: 64px; flex-wrap: wrap; padding-block: 12px; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 12px; }
+      .hero { min-height: 520px; padding-block: 70px; }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .project-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .wrap { width: min(var(--content), calc(100% - 28px)); }
+      .nav-links a { font-size: 12px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .section { padding-block: 60px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="التنقل الرئيسي">
+      <a class="brand" href="#home" aria-label="HARD، بداية الصفحة">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>HARD / PROJECT</span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">عن المشروع</a>
+        <a href="#design">التصميم</a>
+        <a href="#publishing">النشر</a>
+      </div>
+    </nav>
+  </header>
 
-    <!-- شريط التحديثات المتحرك -->
-    <div class="top-ticker">
-        <marquee scrollamount="5">⚡ HARDCHEAT ULTIMATE — CONQUER ONLINE COMMUNITY · MACRO / CLICKER · GAME LINKS UPDATED</marquee>
-    </div>
-
-    <canvas id="particles"></canvas>
-    <div class="glow-grid"></div>
-
-    <!-- ===== الهيدر ===== -->
-    <header>
-        <div class="logo">HARD<span>CHEAT</span></div>
-        <nav>
-            <ul>
-                <li><a href="#home" onclick="playClick()">HOME</a></li>
-                <li><a href="#features" onclick="playClick()">FEATURES</a></li>
-                <li><a href="#servers" onclick="playClick()">GAMES</a></li>
-                <li><a href="#contact" onclick="playClick()">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Toggle SFX">🔊</button>
-            <a class="fb-btn" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-                CONTACT US
-            </a>
-        </div>
-    </header>
-
-    <!-- ===== الهيرو ===== -->
-    <section class="hero" id="home">
-        <div class="tag">System Monitor & Memory Engine</div>
-        <h1>HARDCHEAT <span class="gradient-text">ULTIMATE</span></h1>
-        <p>
-            مع HardCheat.. السيطرة بقت في إيدك في كل مكان!<br>
-            Aimbot · Auto Jump · Speed & Combo · Fire of Hell · Macros
-            — كل ده في أداة واحدة لسيرفرات Conquer Online 2D.
+  <main>
+    <section class="hero wrap" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">WINDOWS DESKTOP · WPF</span>
+        <h1>واجهة لها <span class="accent">حضور.</span><br>ومشروع واضح.</h1>
+        <p class="hero-copy">
+          صفحة تعريفية لمشروع تطبيق Windows، بهوية داكنة ولمسات حمراء مستوحاة من واجهته.
+          هنا تقدر تعرض فكرة المشروع، تقنياته، وطريقة الوصول إلى مستودعه بوضوح.
         </p>
-        <div class="hero-actions">
-            <a href="#features" class="btn filled" onclick="playClick()">EXPLORE FEATURES</a>
-            <a href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" class="btn" onclick="playClick()">CONTACT SUPPORT</a>
+        <div class="actions">
+          <a class="button button-primary" href="#overview">استكشف المشروع <span aria-hidden="true">←</span></a>
+          <a class="button" href="#publishing">تجهيز GitHub Pages</a>
         </div>
-        <div class="scroll-hint">▼ Scroll Down</div>
+      </div>
     </section>
 
-    <!-- ===== المزايا ===== -->
-    <section id="features">
-        <div class="section-title reveal">
-            <h2>⚡ <span class="gradient-text">FEATURES</span></h2>
-            <p>أدوات ومزايا HardCheat — تفاصيل واضحة وروابط الألعاب في مكان واحد</p>
-            <div class="line"></div>
+    <section class="section" id="overview">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>عن المشروع</h2>
+          <p>عرض مختصر وصريح للتطبيق بدل وعود أو مزايا غير موثقة.</p>
         </div>
-
-        <div class="features-grid">
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🎯</span>
-                <h3>AIMBOT</h3>
-                <p>دقة خيالية في استهداف الخصم تلقائياً — lock-on فوري بدون أخطاء.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🥷</span>
-                <h3>NINJA</h3>
-                <p>كومبو خارق وسرعة تنفيذ قصوى لكل حركات النينجا.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🧘</span>
-                <h3>MONK</h3>
-                <p>ثبات كامل وسلاسة في إطلاق المهارات بدون أي تأخير.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🛡️</span>
-                <h3>TROJAN</h3>
-                <p>سرعات هجوم محسّنة وتفعيل مهارات فوري للتروجان.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🦘</span>
-                <h3>AUTO JUMP</h3>
-                <p>حركة ذكية تلقائية للهروب والهجوم — القفز في التوقيت المثالي.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">💀</span>
-                <h3>AUTO REVIVE</h3>
-                <p>عودة فورية للحياة بعد السقوط — بدون ما تخرج من اللعبة.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🔧</span>
-                <h3>AUTO REFINE</h3>
-                <p>تحسين وتطوير معداتك تلقائياً بأعلى نسب نجاح.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">🔥</span>
-                <h3>FIRE OF HELL</h3>
-                <p>أتمتة Fire of Hell لأقصى ضرر في الـ PK — ماكرو جاهز.</p>
-                <span class="status">Working</span>
-            </div>
-            <div class="card reveal" onclick="playClick()">
-                <span class="icon">⚙️</span>
-                <h3>MACRO / CLICKER</h3>
-                <p>الكليكر والماكرو شغالين مع جميع إصدارات Conquer Online — تحكّم أسرع وتنفيذ أسهل.</p>
-                <span class="status">Working</span>
-            </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">▣</span>
+            <h3>تطبيق Windows</h3>
+            <p>مشروع سطح مكتب مبني بواجهة WPF، مع صفحات وإعدادات مخصصة.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">◈</span>
+            <h3>هوية بصرية متناسقة</h3>
+            <p>ألوان داكنة، تباين واضح، ولمسات حمراء متوافقة مع طابع واجهة التطبيق.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">⌘</span>
+            <h3>معلومات قابلة للمراجعة</h3>
+            <p>استخدم مستودع GitHub لشرح المتطلبات، طريقة البناء، التغييرات، وأي اعتماد على خدمات خارجية.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- ===== الألعاب المدعومة مع البحث ===== -->
-    <section id="servers">
-        <div class="section-title reveal">
-            <h2>🌐 SUPPORTED <span class="gradient-text">GAMES</span></h2>
-            <p>ابحث عن اسم اللعبة واضغط على بطاقتها لفتح الموقع الرسمي أو صفحة السيرفر</p>
-            <div class="line"></div>
+    <section class="section" id="design">
+      <div class="wrap">
+        <div class="project-panel">
+          <div>
+            <span class="eyebrow">DESIGN SYSTEM</span>
+            <h2>أسود هادئ، وأحمر محسوب.</h2>
+            <p>
+              اعتمدت الصفحة على درجات فحمية وخلفيات بسيطة، مع الأحمر للأزرار والعناصر المهمة فقط؛
+              عشان تفضل الواجهة مميزة من غير توهج زائد أو زحمة ألوان.
+            </p>
+          </div>
+          <div class="project-facts" aria-label="معلومات التصميم">
+            <div class="fact"><span>المنصة</span><span>Windows</span></div>
+            <div class="fact"><span>تقنية الواجهة</span><span>WPF</span></div>
+            <div class="fact"><span>أسلوب العرض</span><span>RTL · Responsive</span></div>
+          </div>
         </div>
-
-        <!-- مربع البحث -->
-        <div class="search-box reveal">
-            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            <input type="text" id="gameSearch" placeholder="ابحث عن اسم لعبتك المفضلة..." onkeyup="filterGames()">
-        </div>
-
-        <div class="servers-grid reveal" id="serversGrid">
-            <a class="server-chip" href="https://dopamine-co.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">Dopamine-Co <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://www.notconquer.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">NotConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://devilpower.top/home" target="_blank" rel="noopener noreferrer" onclick="playClick()">Devilpower <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://www.shadow-co.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ShadowCo <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://conqueravalon.com/register" target="_blank" rel="noopener noreferrer" onclick="playClick()">AvalonConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://troyconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">TroyConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://zone-servers.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ZONEConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://volcanoconquer.com/?page=home" target="_blank" rel="noopener noreferrer" onclick="playClick()">VolcanoConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://majestic-co.top/" target="_blank" rel="noopener noreferrer" onclick="playClick()">Majestic-Co <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://www.egyconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">EgyConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://www.immortalsco.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ImmortalsCo <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://stormco99.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">StormCo99 <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://voidconquer.online/" target="_blank" rel="noopener noreferrer" onclick="playClick()">VoidConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://warconquer.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">WarConquer <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://www.conqueraway.com/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ConquerAway <span class="ok">● GAME SITE</span></a>
-            <a class="server-chip" href="https://imperio.latinconquer.top/" target="_blank" rel="noopener noreferrer" onclick="playClick()">ImperioConquer <span class="ok">● GAME SITE</span></a>
-            <div class="server-chip no-link" role="note" aria-label="Kemet-Co website not provided">Kemet-Co <span class="ok pending">● LINK COMING SOON</span></div>
-        </div>
-
-        <p class="server-note reveal">🔗 لو لعبتك مش موجودة كلمنا على الخاص وهنضيفها فوراً</p>
-
-        <!-- ===== لوحة التحكم التفاعلية ===== -->
-        <div class="control-panel reveal">
-            <div class="control-tabs">
-                <button class="tab active" onclick="showContent('overview'); playClick();">🎮 OVERVIEW</button>
-                <button class="tab" onclick="showContent('servers'); playClick();">🌐 GAMES</button>
-                <button class="tab" onclick="showContent('classes'); playClick();">⚔️ CLASSES</button>
-                <button class="tab" onclick="showContent('features_list'); playClick();">⚡ FEATURES</button>
-                <button class="tab" onclick="showContent('macros'); playClick();">🔥 FIRE OF HELL & MACRO</button>
-                <button class="tab" onclick="showContent('support'); playClick();">🛡️ UNBAN & SUPPORT</button>
-            </div>
-
-            <div class="display-box" id="contentDisplay">
-                <h3>🎮 HardCheat Control Center</h3>
-                <ul>
-                    <li>كل المزايا شغّالة — Aimbot · Auto Jump · Auto Revive · Auto Refine</li>
-                    <li>Fire of Hell & Macro System جاهزة للتفعيل</li>
-                    <li>دعم سيرفرات Conquer Online 2D — اضغط على اللعبة وافتح موقعها</li>
-                    <li>Unban Specialist — فك باند IP & HWID</li>
-                </ul>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- ===== التواصل ===== -->
-    <section id="contact">
-        <div class="section-title reveal">
-            <h2>📞 CONTACT <span class="gradient-text">US</span></h2>
-            <p>لعبتك مش يحبيبيبي موجودة؟ كلمنا على الخاص وهنضيفها فوراً</p>
-            <div class="line"></div>
+    <section class="section" id="publishing">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>قبل النشر على GitHub</h2>
+          <p>خطوات بسيطة تخلي صفحة المشروع أوضح وأسهل للمراجعة.</p>
         </div>
-        <div class="control-tabs reveal">
-            <a class="tab" href="https://www.facebook.com/ConqeurHard" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" onclick="playClick()">📘 Official Page</a>
-            <a class="tab" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" onclick="playClick()">👤 Personal Account</a>
+        <div class="notice">
+          <strong>مهم:</strong> أضف رابط المستودع الحقيقي بعد إنشائه، واكتب README يشرح الاستخدام والمتطلبات
+          والبيانات التي يتعامل معها التطبيق. لا ترفع مفاتيح أو بيانات اعتماد، واحذف ملفات البناء
+          والملفات المؤقتة من المستودع.
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- ===== الفوتر ===== -->
-    <footer>
-        <span class="logo">HARD<span>CHEAT</span></span>
-        <p>System Monitor & Memory Management Engine — Ultimate Control.</p>
-        <div class="social-row">
-            <a class="social" href="https://www.facebook.com/ConqeurHard" target="_blank" rel="noopener noreferrer" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-                Official Page
-            </a>
-            <a class="social" href="https://www.facebook.com/profile.php?id=61585711923536" target="_blank" rel="noopener noreferrer" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-                Personal Account
-            </a>
-        </div>
-        <p class="warning">© 2026 HardCheat. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // ===== نظام الأصوات التفاعلية (Web Audio API) =====
-        let soundEnabled = true;
-        let audioCtx = null;
-
-        function toggleSound() {
-            soundEnabled = !soundEnabled;
-            document.getElementById('soundToggle').innerText = soundEnabled ? '🔊' : '🔇';
-            if (soundEnabled) playClick();
-        }
-
-        function playClick() {
-            if (!soundEnabled) return;
-            try {
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-                
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
-                
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-                
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e) {}
-        }
-
-        // ===== ميزة البحث السريع عن الألعاب =====
-        function filterGames() {
-            const input = document.getElementById('gameSearch').value.toLowerCase();
-            const chips = document.querySelectorAll('.server-chip');
-            chips.forEach(chip => {
-                const text = chip.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    chip.style.display = 'block';
-                } else {
-                    chip.style.display = 'none';
-                }
-            });
-        }
-
-        // ===== خلفية الجزيئات المتحركة =====
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let W, H, particles = [];
-        function resize() {
-            W = canvas.width = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const COLORS = ['#00f3ff', '#ff2d78', '#7b2dff', '#00ff88'];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * W;
-                this.y = Math.random() * H;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.6;
-                this.speedY = (Math.random() - 0.5) * 0.6;
-                this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-                this.alpha = Math.random() * 0.6 + 0.2;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > W) this.speedX *= -1;
-                if (this.y < 0 || this.y > H) this.speedY *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.alpha;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.globalAlpha = 1;
-                ctx.shadowBlur = 0;
-            }
-        }
-        for (let i = 0; i < 70; i++) particles.push(new Particle());
-
-        function animate() {
-            ctx.clearRect(0, 0, W, H);
-            particles.forEach(p => { p.update(); p.draw(); });
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = 'rgba(0,243,255,' + (0.12 * (1 - dist / 120)) + ')';
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // ===== الظهور التدريجي عند السكرول =====
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ===== لوحة التحكم التفاعلية =====
-        function showContent(type) {
-            const display = document.getElementById('contentDisplay');
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const data = {
-                overview: {
-                    title: '🎮 HardCheat Control Center',
-                    items: [
-                        'كل المزايا شغّالة — Aimbot · Auto Jump · Auto Revive · Auto Refine',
-                        'Macro / Clicker — يعمل مع جميع إصدارات Conquer Online',
-                        'دعم سيرفرات Conquer Online 2D — اضغط على اللعبة وافتح موقعها',
-                        'Unban Specialist — فك باند IP & HWID'
-                    ]
-                },
-                servers: {
-                    title: '🌐 Supported Games (Click to open)',
-                    items: [
-                        'Dopamine-Co → dopamine-co.com',
-                        'NotConquer → notconquer.online',
-                        'Devilpower → devilpower.top',
-                        'ShadowCo → shadow-co.online',
-                        'AvalonConquer → conqueravalon.com',
-                        'TroyConquer → troyconquer.com',
-                        'ZONEConquer → zone-servers.online',
-                        'VolcanoConquer → volcanoconquer.com',
-                        'Majestic-Co → majestic-co.top',
-                        'EgyConquer → egyconquer.com',
-                        'ImmortalsCo → immortalsco.com',
-                        'StormCo99 → stormco99.online',
-                        'VoidConquer → voidconquer.online',
-                        'WarConquer → warconquer.com',
-                        'ConquerAway → conqueraway.com',
-                        'ImperioConquer → imperio.latinconquer.top',
-                        'Kemet-Co → website link coming soon'
-                    ]
-                },
-                classes: {
-                    title: '⚔️ Character & Class Capabilities',
-                    items: [
-                        'Ninja: Ultra-fast combo & execution',
-                        'Monk: High stability & skill flow',
-                        'Trojan: Optimized attack speeds',
-                        'Archer: Enhanced precision attacks',
-                        'Water Taoist: Support & auto-revive',
-                        'Fire Taoist: Fire of Hell automation'
-                    ]
-                },
-                features_list: {
-                    title: '⚡ Advanced Automation Features',
-                    items: [
-                        'Aimbot — Precision target lock',
-                        'Auto Jump — Smart dodging & movement',
-                        'Auto Revive — Instant recovery',
-                        'Auto Refine — Automatic gear upgrading',
-                        'Speed & Combo — Zero delay PK execution',
-                        'Unban Specialist — IP & HWID bypass tools'
-                    ]
-                },
-                macros: {
-                    title: '🔥 Fire of Hell & Macros',
-                    items: [
-                        'Fire of Hell Automation — configurable macro workflow',
-                        'Macro / Clicker — works with all Conquer Online versions',
-                        'Memory Engine Optimization',
-                        'Full protection systems'
-                    ]
-                },
-                support: {
-                    title: '🛡️ Unban Specialist & Support',
-                    items: [
-                        'فك باند IP & HWID لأي حساب أو جهاز في أسرع وقت',
-                        'لعبتك مش موجودة؟ ابعتلنا اسم اللعبة على الخاص',
-                        'فريق الدععععععععععععععم هيتواصصصصصصصصصصصصصصصصصل معصصصصصاك فوراً بكل التفاصيل',
-                        '📘 صفحتنا: facebook.com/ConqeurHard',
-                        '👤 أكونتنا: facebook.com/profile.php?id=61585711923536'
-                    ]
-                }
-            };
-
-            const d = data[type];
-            display.innerHTML = '<h3>' + d.title + '</h3><ul>' +
-                d.items.map(i => '<li>' + i + '</li>').join('') + '</ul>';
-        }
-    </script>
+  <footer>
+    <div class="footer-inner wrap">
+      <p>HARD / PROJECT</p>
+      <p>صفحة تعريفية للمشروع · حدّث المعلومات قبل النشر</p>
+    </div>
+  </footer>
 </body>
 </html>
